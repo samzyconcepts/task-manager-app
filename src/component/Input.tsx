@@ -1,4 +1,4 @@
 const Input = () => {
-    return <input type="text" placeholder="Add your task..." />;
+    return <input className="border" type="text" placeholder="Add your task..." />;
 };
 export default Input;
