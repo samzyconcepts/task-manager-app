@@ -12,7 +12,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <input
                 {...rest}
                 ref={ref}
-                className={cn("px-4 py-2 rounded-lg border outline-[#855DDE]", className)}
+                className={cn(
+                    "px-4 py-2 rounded-lg border bg-transparent outline-[#855DDE]",
+                    className
+                )}
                 placeholder={placeholder}
                 type={inputType}
             />

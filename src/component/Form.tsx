@@ -3,10 +3,10 @@ import Input from "./ui/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import ErrorText from "./ErrorText";
 
 // Image
 import send from "../assets/send.svg";
-import ErrorText from "./ErrorText";
 
 const taskValueSchema = z.object({
     task: z
