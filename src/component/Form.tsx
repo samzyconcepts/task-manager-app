@@ -1,9 +1,13 @@
-import Button from "./ui/Button";
-import Input from "./ui/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import ErrorText from "./ErrorText";
+import { useDispatch } from "react-redux";
+import { addTask } from "../state/task/taskSlice";
+
+// UI components
+import Button from "./ui/Button";
+import Input from "./ui/Input";
 
 // Image
 import send from "../assets/send.svg";
@@ -26,11 +30,15 @@ export const Form = () => {
         resolver: zodResolver(taskValueSchema),
     });
 
+    const dispatch = useDispatch();
+
+    const onSubmit = (data: taskValue) => {
+        // add the new task to the store
+        dispatch(addTask(data.task));
+    };
+
     return (
-        <form
-            onSubmit={handleSubmit((data) => {
-                alert(data.task);
-            })}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className="container mx-auto flex gap-4">
                 <Input
                     {...register("task")}
