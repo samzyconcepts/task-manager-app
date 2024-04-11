@@ -1,12 +1,13 @@
 import { cva } from "class-variance-authority";
 import { cn } from "../../util/cn";
 
-type ButtonProps = React.HTMLAttributes<HTMLButtonElement> & {
-    variant?: "primary" | "secondary";
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    variant?: "primary" | "secondary",
+    type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
 };
 
-export default function Button({ className, variant, ...props }: ButtonProps) {
-    return <button {...props} className={cn(buttonVariants({ variant }), className)} />;
+export default function Button({ className, variant, type, ...props }: ButtonProps) {
+    return <button {...props} className={cn(buttonVariants({ variant }), className)} type={type} />;
 }
 
 // cva (class variance authority) is a library that allows you to configure different variance for a button each with is own style. It makes our button reuseable with different style.

@@ -1,17 +1,23 @@
+import React from "react";
 import { cn } from "../../util/cn";
 
-type InputProps = React.HTMLAttributes<HTMLInputElement> & {
-    type: string;
+interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
+    inputType: React.InputHTMLAttributes<HTMLInputElement>["type"];
     placeholder: string;
-};
+}
 
-const Input = ({ className, type, placeholder }: InputProps) => {
-    return (
-        <input
-            className={cn("px-4 py-2 rounded-lg border outline-[#855DDE]", className)}
-            type={type}
-            placeholder={placeholder}
-        />
-    );
-};
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+    ({ className, inputType, placeholder, ...rest }, ref) => {
+        return (
+            <input
+                {...rest}
+                ref={ref}
+                className={cn("px-4 py-2 rounded-lg border outline-[#855DDE]", className)}
+                placeholder={placeholder}
+                type={inputType}
+            />
+        );
+    }
+);
+
 export default Input;
