@@ -22,8 +22,8 @@ const taskSlice = createSlice({
         addTask: (state, action: PayloadAction<string>) => {
             const newTaskId = uuidv4();
             state.tasks = [
-                ...state.tasks,
                 { id: newTaskId, name: action.payload, completed: false },
+                ...state.tasks,
             ];
         },
         removeTask: (state, action: PayloadAction<string>) => {
@@ -51,7 +51,6 @@ const taskSlice = createSlice({
     },
 });
 
+export const { addTask, removeTask, updateTaskName, toggleCompleted } = taskSlice.actions;
 
-export const {addTask, removeTask, updateTaskName, toggleCompleted} = taskSlice.actions
-
-export default taskSlice.reducer
+export default taskSlice.reducer;
