@@ -26,6 +26,7 @@ export const Form = () => {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
+        reset,
     } = useForm<taskValue>({
         resolver: zodResolver(taskValueSchema),
     });
@@ -35,6 +36,7 @@ export const Form = () => {
     const onSubmit = (data: taskValue) => {
         // add the new task to the store
         dispatch(addTask(data.task));
+        reset();
     };
 
     return (
